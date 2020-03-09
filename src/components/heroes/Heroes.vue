@@ -35,11 +35,14 @@
           :search="search"
           class="elevation-1"
         >
-          <template v-slot:item.estatus="{ item }">
-            <div style="text-align: center;">{{ item.id }}</div>
+          <template v-slot:item.race="{ item }">
+            <div style="text-align: center;">{{ item.race.name }}</div>
           </template>
-          <template v-slot:item.monto="{ item }">
-            <div style="text-align: center;">{{ item.id }}</div>
+          <template v-slot:item.class="{ item }">
+            <div style="text-align: center;">{{ item.hero_class.name }}</div>
+          </template>
+          <template v-slot:item.weapon="{ item }">
+            <div style="text-align: center;">{{ item.weapon.name }}</div>
           </template>
           <template v-slot:item.action="{ item }">
             <v-icon small class="mr-2" @click="goToEditHero(item)" color="primary">edit</v-icon>
