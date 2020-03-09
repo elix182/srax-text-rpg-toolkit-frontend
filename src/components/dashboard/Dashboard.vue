@@ -32,12 +32,12 @@
             </div>
           </v-card-text>
           <v-card-actions>
-            
+            <v-btn color="primary" text v-on:click="goToHeroes" style="float: right;">Go to Heroes</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
 
-      <v-col class="6">
+      <v-col cols="6">
         <v-card class="mx-auto" max-width="344">
           <v-card-text>
             <p class="display-1 text--primary">
@@ -64,7 +64,7 @@
             </div>
           </v-card-text>
           <v-card-actions>
-            
+            <v-btn color="primary" text v-on:click="goToMonsters" style="float: right;">Go to Monsters</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -85,16 +85,28 @@
       monstersSummary: null
     }),
     methods: {
+      goToHeroes: function(){
+        this.$router.push({ path: "heroes" });
+      },
+      goToMonsters: function(){
+        this.$router.push({ path: "monsters" });
+      },
       fetchHeroesSummary: function(){
-        axios.get('http://localhost:8000/api/hero/dashboard')
+        axios.get('api/hero/dashboard')
           .then((response) => {
             this.heroesSummary = response.data;
+            if(this.heroesSummary.available == 0){
+              this.heroesSummary = null;
+            }
           });
       },
       fetchMonstersSummary: function(){
-        axios.get('http://localhost:8000/api/monster/dashboard')
+        axios.get('api/monster/dashboard')
           .then((response) => {
             this.monstersSummary = response.data;
+            if(this.monstersSummary.available == 0){
+              this.monstersSummary = null;
+            }
           });
       }
     }

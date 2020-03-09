@@ -32,7 +32,7 @@
     }),
     methods: {
       goToDashboard: function(){
-        this.$router.push({ path: 'dashboard' })
+        this.$router.replace({ path: 'dashboard' })
       }
     }
   }

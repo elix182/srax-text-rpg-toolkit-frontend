@@ -1,7 +1,8 @@
 import Vue from 'vue'
-import App from './App.vue'
+import './plugins/axios';
 import vuetify from './plugins/vuetify';
 import router from './plugins/vuerouter';
+import App from './App.vue'
 
 Vue.config.productionTip = false
 
