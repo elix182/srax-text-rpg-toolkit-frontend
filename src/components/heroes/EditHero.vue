@@ -194,7 +194,7 @@ export default {
           console.log(response.data);
           this.goBack();
         })
-        .cathc(err => {
+        .catch(err => {
           console.log(err);
         });
     },
