@@ -18,6 +18,7 @@
         <p class="subheading font-weight-regular">
           This is the SRAX Test for young and talented developers!
         </p>
+        <v-btn color="primary" dark v-on:click="goToDashboard">Enter</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -29,5 +30,10 @@
 
     data: () => ({
     }),
+    methods: {
+      goToDashboard: function(){
+        this.$router.push({ path: 'dashboard' })
+      }
+    }
   }
 </script>
