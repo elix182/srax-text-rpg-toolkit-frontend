@@ -105,7 +105,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Heroes",
+  name: "CreateHero",
   mounted: function() {
     this.fetchHeroRaces();
   },

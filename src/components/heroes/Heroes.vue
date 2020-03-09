@@ -78,6 +78,7 @@ export default {
         sortable: true,
         value: "lastName"
       },
+      { text: "Level", value: "level", align: "center", sortable: true },
       { text: "Race", value: "race", align: "center", sortable: false },
       { text: "Class", value: "class", align: "center", sortable: false },
       { text: "Weapon", value: "weapon", align: "center", sortable: false },

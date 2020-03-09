@@ -15,7 +15,7 @@ const routes = [
   { path: '/dashboard', component: Dashboard },
   { path: '/heroes', component: Heroes },
   { path: '/heroes/create', component: CreateHero },
-  { path: '/heroes/edit', component: EditHero },
+  { path: '/heroes/edit/:id', component: EditHero },
   { path: '/heroes/random', component: RandomHero },
   { path: '/monsters', component: Monsters }
 ];
