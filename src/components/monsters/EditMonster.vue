@@ -123,6 +123,7 @@ export default {
         self.str = monster.str;
         self.dex = monster.dex;
         self.int = monster.int;
+        self.picture = JSON.parse(monster.picture);
         self.fetchRaces(function(){
           self.race = monster.race.id;
           self.fetchRaceAbilities(function(){

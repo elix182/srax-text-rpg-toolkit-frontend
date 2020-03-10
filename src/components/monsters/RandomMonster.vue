@@ -3,24 +3,28 @@
     <v-row no-gutters justify="center">
       <v-col cols="6">
         <v-card>
-          <v-card-title>Hero Information</v-card-title>
+          <v-card-title>Monster Information</v-card-title>
           <v-list-item>
             <v-list-item-content>
               <v-container>
                 <v-row>
-                  <v-text-field v-model="firstName" label="First Name" readonly></v-text-field>
-                </v-row>
-                <v-row>
-                  <v-text-field v-model="lastName" label="Last Name" readonly></v-text-field>
+                  <v-text-field v-model="name" label="Name" readonly></v-text-field>
                 </v-row>
                 <v-row>
                   <v-text-field v-model="race.name" label="Race" readonly></v-text-field>
                 </v-row>
                 <v-row>
-                  <v-text-field v-model="heroClass.name" label="Class" readonly></v-text-field>
-                </v-row>
-                <v-row>
-                  <v-text-field v-model="weapon.name" label="Weapon" readonly></v-text-field>
+                  <v-select
+                    v-model="selectedAbilities"
+                    :items="abilities"
+                    item-text="name"
+                    item-value="id"
+                    :menu-props="{ maxHeight: '400' }"
+                    label="Abilities"
+                    persistent-hint
+                    multiple
+                    readonly
+                  ></v-select>
                 </v-row>
               </v-container>
             </v-list-item-content>
@@ -29,7 +33,7 @@
       </v-col>
       <v-col cols="6">
         <v-card>
-          <v-card-title>Hero Stats</v-card-title>
+          <v-card-title>Monster Stats</v-card-title>
           <v-list-item>
             <v-list-item-content>
               <v-container>
@@ -62,8 +66,8 @@
           <v-list-item>
             <v-list-item-content>
               <v-container>
-                <v-btn color="info" v-on:click="fetchHero">Randomize</v-btn>
-                <v-btn color="primary" dark v-on:click="createHero">Create</v-btn>
+                <v-btn color="info" v-on:click="fetchMonster">Randomize</v-btn>
+                <v-btn color="primary" dark v-on:click="createMonster">Create</v-btn>
                 <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
               </v-container>
             </v-list-item-content>
@@ -77,64 +81,64 @@
 <script>
 import axios from "axios";
 export default {
-  name: "RandomHero",
+  name: "RandomMonster",
   mounted: function() {
-    this.fetchHero();
+    this.fetchMonster();
   },
   data: () => ({
-    races: [],
-    classes: [],
-    weapons: [],
-    firstName: "",
-    lastName: "",
+    name: "",
     race: null,
-    heroClass: null,
-    weapon: null,
+    selectedAbilities: [],
+    abilities: [],
     str: "",
     strRoll: "",
     dex: "",
     dexRoll: "",
     int: "",
-    intRoll: ""
+    intRoll: "",
+    picture: []
   }),
   methods: {
     goBack: function(){
         this.$router.go(-1);
     },
-    fetchHero: function(){
+    fetchMonster: function(){
     let self = this;
-    self.generateRandomHeroRequest((hero) => {
-        self.firstName = hero.firstName;
-        self.lastName = hero.lastName;
-        self.race = hero.race;
-        self.heroClass = hero.class;
-        self.weapon = hero.weapon;
+    self.generateRandomMonsterRequest((monster) => {
+        self.name = monster.name;
+        self.race = monster.race;
+        self.abilities = monster.abilities;
+        self.selectedAbilities = [];
+        for(let i = 0; i < monster.abilities.length; ++i){
+          self.selectedAbilities.push(monster.abilities[i].id);
+        }
+        self.picture = JSON.parse(monster.picture)
         self.roll('STR');
         self.roll('DEX');
         self.roll('INT');
     });
     },
-    generateRandomHeroRequest: function(callback = null) {
-      axios.get("api/hero/random").then(response => {
-        let randomHero = response.data;
+    generateRandomMonsterRequest: function(callback = null) {
+      axios.get("api/monster/random").then(response => {
+        let randomMonster = response.data;
         if(callback != null){
-            callback(randomHero);
+            callback(randomMonster);
         }
       });
     },
-    createHero: function() {
+    createMonster: function() {
       let body = {
-          firstName: this.firstName,
-          lastName: this.lastName,
+          name: this.name,
           raceId: this.race.id,
-          classId: this.heroClass.id,
-          weaponId: this.weapon.id,
+          abilities: this.selectedAbilities,
           str: this.str,
           dex: this.dex,
-          int: this.int
+          int: this.int,
+          picture: JSON.stringify(this.picture)
       };
+      console.log(body);
       axios
-        .post("api/hero", body)
+        .post("api/monster", body)
         .then(response => {
           console.log(response.data);
           this.goBack();
@@ -147,7 +151,7 @@ export default {
       let rolls = [];
       let sortedRolls = [];
       for (let i = 0; i < 4; ++i) {
-        let random = Math.random() * 6 + 1;
+        let random = Math.random() * 20 + 6;
         let roll = Math.floor(random);
         rolls.push(roll);
         sortedRolls.push(roll);
