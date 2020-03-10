@@ -56,13 +56,13 @@ export default {
       drawer: null,
       items: [
         { title: 'Dashboard', icon: 'home', component: '/dashboard', subitems: [] },
-        { title: 'Heroes', icon: 'people', component: '', subitems: [
+        { title: 'Heroes', icon: 'people', component: '/heroes', subitems: [
           // { title:'List', icon: '', component:'/heroes' },
           // { title:'Create', icon: '', component:'/heroes/create' },
           // { title:'Randomize', icon: '', component:'/heroes/random' }
           ] 
         },
-        { title: 'Monsters', icon: 'pets', component: '', subitems: [
+        { title: 'Monsters', icon: 'pets', component: '/monsters', subitems: [
           // { title:'List', icon: '', component:'/monsters' },
           // { title:'Create', icon: '', component:'/monsters/create' },
           // { title:'Randomize', icon: '', component:'/monsters/random' }

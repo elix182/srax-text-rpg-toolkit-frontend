@@ -24,6 +24,12 @@
   </v-container>
 </template>
 
+<style>
+  .body {
+    background-color: #37474f;
+  }
+</style>
+
 <script>
   export default {
     name: 'LandingPage',
