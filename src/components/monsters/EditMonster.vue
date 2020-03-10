@@ -2,12 +2,17 @@
   <v-container>
     <v-row>
         <v-col>
-        <v-card class="mx-auto" max-width="50%" style="float: right;">
+        <v-card class="mx-auto">
           <v-list-item>
             <v-list-item-content>
               <v-container>
-                <v-btn color="primary" dark v-on:click="updateMonster">Update</v-btn>
-                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
+                <div style="float: left">
+                  <v-btn color="primary" text v-on:click="discard">Discard</v-btn>
+                </div>
+                <div style="float: right">
+                  <v-btn color="primary" dark v-on:click="updateMonster">Update</v-btn>
+                  <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
+                </div>
               </v-container>
             </v-list-item-content>
           </v-list-item>
@@ -162,6 +167,28 @@ export default {
   methods: {
     goBack: function(){
         this.$router.go(-1);
+    },
+    discard: function(){
+      this.races= [];
+      this.abilities= [];
+      this.name= "";
+      this.race= null;
+      this.selectedAbilities= [];
+      this.str= "";
+      this.strRoll= "";
+      this.dex= "";
+      this.dexRoll= "";
+      this.int= "";
+      this.intRoll= "";
+      this.fetchRaces();
+      this.picture = [];
+      for(let i = 0; i < 8; ++i){
+        this.picture[i] = []
+        for(let j = 0; j < 8; ++j){
+          this.picture[i][j] = '#FFFFFF';
+        }
+      }
+      this.fetchMonster(this.monsterId);
     },
     setGridColor: function(x, y){
       this.picture[x][y] = this.color;
