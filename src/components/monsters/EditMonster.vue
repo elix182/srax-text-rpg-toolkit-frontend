@@ -126,6 +126,10 @@
 import axios from "axios";
 export default {
   name: "EditMonster",
+  created: function () {
+    this.$emit("loggedInEvent", true);
+    this.$emit("componentChangedEvent", 'Edit Monster');
+  },
   mounted: function() {
     let self = this;
     self.monsterId = self.$route.params.id;

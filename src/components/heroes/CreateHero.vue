@@ -106,6 +106,10 @@
 import axios from "axios";
 export default {
   name: "CreateHero",
+  created: function () {
+    this.$emit("loggedInEvent", true);
+    this.$emit("componentChangedEvent", 'Create Hero');
+  },
   mounted: function() {
     this.fetchHeroRaces();
   },

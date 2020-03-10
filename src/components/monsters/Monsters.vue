@@ -52,6 +52,10 @@
 import axios from "axios";
 export default {
   name: "Monsters",
+  created: function () {
+    this.$emit("loggedInEvent", true);
+    this.$emit("componentChangedEvent", 'Monsters');
+  },
   mounted: function() {
     this.fetchMonsters();
   },

@@ -76,6 +76,10 @@
   import axios from 'axios';
   export default {
     name: 'Dashboard',
+    created: function () {
+      this.$emit("loggedInEvent", true);
+      this.$emit("componentChangedEvent", 'Dashboard');
+    },
     mounted: function() {
       this.fetchHeroesSummary();
       this.fetchMonstersSummary();

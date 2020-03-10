@@ -127,6 +127,10 @@
 import axios from "axios";
 export default {
   name: "CreateMonster",
+  created: function () {
+    this.$emit("loggedInEvent", true);
+    this.$emit("componentChangedEvent", 'Create Monster');
+  },
   mounted: function() {
     this.fetchRaces();
     this.picture = [];

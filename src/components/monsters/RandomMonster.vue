@@ -114,6 +114,10 @@
 import axios from "axios";
 export default {
   name: "RandomMonster",
+  created: function () {
+    this.$emit("loggedInEvent", true);
+    this.$emit("componentChangedEvent", 'Create Random Monster');
+  },
   mounted: function() {
     this.fetchMonster();
   },

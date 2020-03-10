@@ -58,6 +58,10 @@
 import axios from "axios";
 export default {
   name: "Heroes",
+  created: function () {
+    this.$emit("loggedInEvent", true);
+    this.$emit("componentChangedEvent", 'Heroes');
+  },
   mounted: function() {
     this.fetchHeroes();
   },
