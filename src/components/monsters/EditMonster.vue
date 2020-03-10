@@ -70,6 +70,31 @@
         </v-card>
       </v-col>
     </v-row>
+    <!-- Monster picture editor -->
+    <v-row>
+      <v-col>
+        <v-card>
+          <v-list-item>
+            <v-list-item-content>
+              <v-container>
+                <v-row>
+                  <v-col>
+                    <v-row v-for="(row, y) in picture" v-bind:key="y">
+                      <div v-for="(pixel, x) in row" v-bind:key="x" class="square" v-bind:style="{ 'background-color': picture[x][y] }" v-on:click="setGridColor(x, y)">
+                      </div>
+                    </v-row>
+                  </v-col>
+                  <v-col>
+                    <v-color-picker v-model="color"></v-color-picker>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
+    <!-- /Monster picture editor -->
     <v-row>
         <v-col>
         <v-card>
@@ -87,6 +112,16 @@
   </v-container>
 </template>
 
+<style>
+  .square {
+    height: 25pt;
+    width: 25pt;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1pt;
+  }
+</style>
+
 <script>
 import axios from "axios";
 export default {
@@ -94,6 +129,13 @@ export default {
   mounted: function() {
     let self = this;
     self.monsterId = self.$route.params.id;
+    this.picture = [];
+    for(let i = 0; i < 8; ++i){
+      this.picture[i] = []
+      for(let j = 0; j < 8; ++j){
+        this.picture[i][j] = '#FFFFFF';
+      }
+    }
     self.fetchMonster(self.monsterId);
   },
   data: () => ({
@@ -109,11 +151,16 @@ export default {
     dexRoll: "",
     int: "",
     intRoll: "",
-    picture: []
+    picture: [],
+    color:'#000000'
   }),
   methods: {
     goBack: function(){
         this.$router.go(-1);
+    },
+    setGridColor: function(x, y){
+      this.picture[x][y] = this.color;
+      this.$forceUpdate();
     },
     fetchMonster: function(id){
       let self = this;
@@ -124,6 +171,7 @@ export default {
         self.dex = monster.dex;
         self.int = monster.int;
         self.picture = JSON.parse(monster.picture);
+        this.$forceUpdate();
         self.fetchRaces(function(){
           self.race = monster.race.id;
           self.fetchRaceAbilities(function(){

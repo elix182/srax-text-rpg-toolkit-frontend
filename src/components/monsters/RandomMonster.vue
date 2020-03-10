@@ -60,6 +60,28 @@
         </v-card>
       </v-col>
     </v-row>
+    <!-- Monster picture editor -->
+    <v-row>
+      <v-col>
+        <v-card>
+          <v-list-item>
+            <v-list-item-content>
+              <v-container>
+                <v-row>
+                  <v-col>
+                    <v-row v-for="(row, y) in picture" v-bind:key="y">
+                      <div v-for="(pixel, x) in row" v-bind:key="x" class="square" v-bind:style="{ 'background-color': picture[x][y] }" v-on:click="setGridColor(x, y)">
+                      </div>
+                    </v-row>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
+    <!-- /Monster picture editor -->
     <v-row>
         <v-col>
         <v-card>
@@ -77,6 +99,16 @@
     </v-row>
   </v-container>
 </template>
+
+<style>
+  .square {
+    height: 25pt;
+    width: 25pt;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1pt;
+  }
+</style>
 
 <script>
 import axios from "axios";
@@ -112,7 +144,8 @@ export default {
         for(let i = 0; i < monster.abilities.length; ++i){
           self.selectedAbilities.push(monster.abilities[i].id);
         }
-        self.picture = JSON.parse(monster.picture)
+        self.picture = JSON.parse(monster.picture);
+        this.$forceUpdate();
         self.roll('STR');
         self.roll('DEX');
         self.roll('INT');
