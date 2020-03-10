@@ -2,11 +2,14 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-card class="mx-auto" max-width="50%" style="float: right;">
+        <v-card class="mx-auto">
           <v-list-item>
             <v-list-item-content>
               <v-container>
-                <div>
+                <div style="float: left">
+                  <v-btn color="primary" text v-on:click="discard">Discard</v-btn>
+                </div>
+                <div style="float: right">
                   <v-btn color="primary" dark v-on:click="createHero">Create</v-btn>
                   <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
                 </div>
@@ -134,6 +137,23 @@ export default {
   methods: {
     goBack: function() {
       this.$router.go(-1);
+    },
+    discard: function(){
+      this.races= [];
+      this.classes= [];
+      this.weapons= [];
+      this.firstName= "";
+      this.lastName= "";
+      this.race= null;
+      this.heroClass= null;
+      this.weapon= null;
+      this.str= "";
+      this.strRoll= "";
+      this.dex= "";
+      this.dexRoll= "";
+      this.int= "";
+      this.intRoll= "";
+      this.fetchHeroRaces();
     },
     fetchHeroRaces: function() {
       axios.get("api/herorace").then(response => {
