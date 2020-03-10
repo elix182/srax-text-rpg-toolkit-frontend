@@ -180,7 +180,7 @@ export default {
       let rolls = [];
       let sortedRolls = [];
       for (let i = 0; i < 4; ++i) {
-        let random = Math.random() * 6 + 1;
+        let random = (Math.random() * 5) + 1;
         let roll = Math.floor(random);
         rolls.push(roll);
         sortedRolls.push(roll);

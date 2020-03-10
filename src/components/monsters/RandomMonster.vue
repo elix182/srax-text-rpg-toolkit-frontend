@@ -193,7 +193,7 @@ export default {
       let rolls = [];
       let sortedRolls = [];
       for (let i = 0; i < 4; ++i) {
-        let random = Math.random() * 20 + 6;
+        let random = (Math.random() * 14) + 6;
         let roll = Math.floor(random);
         rolls.push(roll);
         sortedRolls.push(roll);

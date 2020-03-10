@@ -34,7 +34,7 @@
           </template>
           <template v-slot:item.action="{ item }">
             <v-icon small class="mr-2" @click="goToEditMonster(item)" color="primary">edit</v-icon>
-            <v-icon small @click="deleteHero(item)" color="danger">delete</v-icon>
+            <v-icon small @click="deleteMonster(item)" color="danger">delete</v-icon>
           </template>
         </v-data-table>
       </v-col>
@@ -84,7 +84,7 @@ export default {
     deleteMonster: function(hero) {
       axios.delete("api/monster/"+hero.id).then(response => {
         console.log(response)
-        this.fetchHeroes()
+        this.fetchMonsters();
       });
     },
     goToRandomMonster: function() {
