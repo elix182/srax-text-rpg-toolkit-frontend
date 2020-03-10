@@ -3,7 +3,8 @@
 import axios from "axios";
 
 let config = {
-  baseURL: "http://192.168.10.10",
+  baseURL: "http://localhost:8000",
+  // baseURL: "http://192.168.10.10",
   timeout: 60 * 1000, // Timeout
 };
 
