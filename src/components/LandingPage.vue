@@ -35,7 +35,7 @@
     methods: {
       goToDashboard: function(){
         this.$emit("loggedInEvent", true);
-        this.$router.push({ path: 'dashboard' })
+        this.$router.replace({ path: 'dashboard' })
       }
     }
   }

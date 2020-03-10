@@ -1,21 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark v-if="appBarVisible">
-      <!-- <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-      </div>-->
+    <navbar v-if="showNavigation" @toggleNavEvent="toggleNavigation"></navbar>
+    <v-app-bar app color="primary" dark v-if="appBarVisible" >
       <v-btn color="secondary" text v-on:click="toggleNavigation" class="mr-2">
         <v-icon>menu</v-icon>
-      </v-btn>
-      <v-btn color="secondary" text v-on:click="goBack" class="mr-2">
-        <v-icon>arrow_back</v-icon>
       </v-btn>
       <v-toolbar-title class="ml-2">
         <span>{{componentTitle}}</span>
@@ -28,15 +16,19 @@
         @loggedInEvent="toggleAppBar"
         @loggedOutEvent="toggleAppBar"
         @componentChangedEvent="updateTitle"
+        @goBackEvent="goBack"
       ></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import navbar from "./components/NavigationBar";
 export default {
   name: "App",
-
+  components: {
+    navbar   
+  },
   data: () => ({
     componentTitle: "",
     appBarVisible: false,
