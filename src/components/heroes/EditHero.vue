@@ -1,8 +1,22 @@
 <template>
   <v-container>
+    <v-row>
+        <v-col>
+        <v-card class="mx-auto" max-width="50%" style="float: right;">
+          <v-list-item>
+            <v-list-item-content>
+              <v-container>
+                <v-btn color="primary" dark v-on:click="updateHero">Update</v-btn>
+                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
+              </v-container>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-row no-gutters justify="center">
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Hero Information</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -57,7 +71,7 @@
         </v-card>
       </v-col>
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Hero Stats</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -79,20 +93,6 @@
                     <v-btn color="primary" dark v-on:click="roll('INT')">Roll</v-btn>
                   </v-col>
                 </v-row>
-              </v-container>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row>
-        <v-col>
-        <v-card>
-          <v-list-item>
-            <v-list-item-content>
-              <v-container>
-                <v-btn color="primary" dark v-on:click="updateHero">Update</v-btn>
-                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
               </v-container>
             </v-list-item-content>
           </v-list-item>

@@ -2,7 +2,7 @@
   <v-container>
    <v-row class="text-center">
       <v-col cols="6">
-        <v-card class="mx-auto" max-width="344">
+        <v-card class="mx-auto" max-width="80%" height="100%">
           <v-card-text>
             <p class="display-1 text--primary">
               Heroes
@@ -32,13 +32,14 @@
             </div>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" text v-on:click="goToHeroes" style="float: right;">Go to Heroes</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text v-on:click="goToHeroes" style="float: right|bottom;">Go to Heroes</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
 
       <v-col cols="6">
-        <v-card class="mx-auto" max-width="344">
+        <v-card class="mx-auto" max-width="80%" height="100%">
           <v-card-text>
             <p class="display-1 text--primary">
               Monsters
@@ -64,7 +65,8 @@
             </div>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" text v-on:click="goToMonsters" style="float: right;">Go to Monsters</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text v-on:click="goToMonsters" style="float: right|bottom;">Go to Monsters</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

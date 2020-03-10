@@ -7,17 +7,11 @@
             <v-list-item-content>
               <v-container>
                 <v-row>
-                  <v-col>
-                    <v-btn color="primary" dark v-on:click="goToCreateHero">Create</v-btn>
-                    <v-btn color="info" dark v-on:click="goToRandomHero">Randomize</v-btn>
-                    <v-spacer></v-spacer>
-                    <v-text-field
-                      v-model="search"
-                      label="Search"
-                      single-line
-                      hide-details
-                      style="float: right; width: 20%;"
-                    ></v-text-field>
+                  <v-col cols="6">
+                    <v-btn color="info"  dark v-on:click="goToRandomHero">Randomize</v-btn>
+                  </v-col>
+                  <v-col cols="6">
+                    <v-btn style="float: right;" color="primary" dark v-on:click="goToCreateHero">Create</v-btn>
                   </v-col>
                 </v-row>
               </v-container>

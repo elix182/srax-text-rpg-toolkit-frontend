@@ -1,8 +1,24 @@
 <template>
   <v-container>
+    <v-row>
+      <v-col>
+        <v-card class="mx-auto" max-width="50%" style="float: right;">
+          <v-list-item>
+            <v-list-item-content>
+              <v-container>
+                <div>
+                  <v-btn color="primary" dark v-on:click="createHero">Create</v-btn>
+                  <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
+                </div>
+              </v-container>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-row no-gutters justify="center">
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Hero Information</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -57,7 +73,7 @@
         </v-card>
       </v-col>
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Hero Stats</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -85,20 +101,6 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row>
-        <v-col>
-        <v-card>
-          <v-list-item>
-            <v-list-item-content>
-              <v-container>
-                <v-btn color="primary" dark v-on:click="createHero">Create</v-btn>
-                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
-              </v-container>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-      </v-col>
-    </v-row>
   </v-container>
 </template>
 
@@ -106,9 +108,9 @@
 import axios from "axios";
 export default {
   name: "CreateHero",
-  created: function () {
+  created: function() {
     this.$emit("loggedInEvent", true);
-    this.$emit("componentChangedEvent", 'Create Hero');
+    this.$emit("componentChangedEvent", "Create Hero");
   },
   mounted: function() {
     this.fetchHeroRaces();
@@ -130,8 +132,8 @@ export default {
     intRoll: ""
   }),
   methods: {
-    goBack: function(){
-        this.$router.go(-1);
+    goBack: function() {
+      this.$router.go(-1);
     },
     fetchHeroRaces: function() {
       axios.get("api/herorace").then(response => {
@@ -155,14 +157,14 @@ export default {
     },
     createHero: function() {
       let body = {
-          firstName: this.firstName,
-          lastName: this.lastName,
-          raceId: this.race,
-          classId: this.heroClass,
-          weaponId: this.weapon,
-          str: this.str,
-          dex: this.dex,
-          int: this.int
+        firstName: this.firstName,
+        lastName: this.lastName,
+        raceId: this.race,
+        classId: this.heroClass,
+        weaponId: this.weapon,
+        str: this.str,
+        dex: this.dex,
+        int: this.int
       };
       axios
         .post("api/hero", body)

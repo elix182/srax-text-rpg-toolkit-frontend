@@ -1,8 +1,22 @@
 <template>
   <v-container>
+    <v-row>
+        <v-col>
+        <v-card class="mx-auto" max-width="50%" style="float: right;">
+          <v-list-item>
+            <v-list-item-content>
+              <v-container>
+                <v-btn color="primary" dark v-on:click="updateMonster">Update</v-btn>
+                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
+              </v-container>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-row no-gutters justify="center">
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Monster Information</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -42,7 +56,7 @@
         </v-card>
       </v-col>
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Monster Stats</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -73,7 +87,8 @@
     <!-- Monster picture editor -->
     <v-row>
       <v-col>
-        <v-card>
+        <v-card class="mx-auto" max-width="80%" height="100%">
+          <v-card-title>Design the monster</v-card-title>
           <v-list-item>
             <v-list-item-content>
               <v-container>
@@ -95,20 +110,6 @@
       </v-col>
     </v-row>
     <!-- /Monster picture editor -->
-    <v-row>
-        <v-col>
-        <v-card>
-          <v-list-item>
-            <v-list-item-content>
-              <v-container>
-                <v-btn color="primary" dark v-on:click="updateMonster">Update</v-btn>
-                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
-              </v-container>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-      </v-col>
-    </v-row>
   </v-container>
 </template>
 

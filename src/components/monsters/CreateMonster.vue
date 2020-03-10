@@ -1,8 +1,22 @@
 <template>
   <v-container>
+    <v-row>
+      <v-col>
+        <v-card class="mx-auto" max-width="50%" style="float: right;">
+          <v-list-item>
+            <v-list-item-content>
+              <v-container>
+                <v-btn color="primary" dark v-on:click="createMonster">Create</v-btn>
+                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
+              </v-container>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-row no-gutters justify="center">
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Monster Information</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -42,7 +56,7 @@
         </v-card>
       </v-col>
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Monster Stats</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -71,21 +85,22 @@
       </v-col>
     </v-row>
     <!-- Monster picture editor -->
-    <v-row>
-      <v-col>
-        <v-card>
+    <v-row class="text-center">
+      <v-col cols="12">
+        <v-card class="mx-auto" max-width="80%">
+          <v-card-title>Design the monster</v-card-title>
           <v-list-item>
             <v-list-item-content>
               <v-container>
-                <v-row>
-                  <v-col>
+                <v-row cols="12">
+                  <v-col cols="6">
                     <v-row v-for="(row, y) in picture" v-bind:key="y">
                       <div v-for="(pixel, x) in row" v-bind:key="x" class="square" v-bind:style="{ 'background-color': picture[x][y] }" v-on:click="setGridColor(x, y)">
                         
                       </div>
                     </v-row>
                   </v-col>
-                  <v-col>
+                  <v-col cols="6">
                     <v-color-picker v-model="color"></v-color-picker>
                   </v-col>
                 </v-row>
@@ -96,20 +111,6 @@
       </v-col>
     </v-row>
     <!-- /Monster picture editor -->
-    <v-row>
-      <v-col>
-        <v-card>
-          <v-list-item>
-            <v-list-item-content>
-              <v-container>
-                <v-btn color="primary" dark v-on:click="createMonster">Create</v-btn>
-                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
-              </v-container>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-      </v-col>
-    </v-row>
   </v-container>
 </template>
 

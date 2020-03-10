@@ -1,5 +1,24 @@
 <template>
   <v-container>
+    <v-row>
+        <v-col>
+        <v-card>
+          <v-list-item>
+            <v-list-item-content>
+              <v-container>
+                <div style="float: left;">
+                  <v-btn color="info" v-on:click="fetchHero">Randomize</v-btn>
+                </div>
+                <div style="float: right;">
+                  <v-btn color="primary" dark v-on:click="createHero">Create</v-btn>
+                  <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
+                </div>
+              </v-container>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-row no-gutters justify="center">
       <v-col cols="6">
         <v-card>
@@ -28,7 +47,7 @@
         </v-card>
       </v-col>
       <v-col cols="6">
-        <v-card>
+        <v-card class="mx-auto" height="100%">
           <v-card-title>Hero Stats</v-card-title>
           <v-list-item>
             <v-list-item-content>
@@ -50,21 +69,6 @@
                     <v-btn color="primary" dark v-on:click="roll('INT')">Roll</v-btn>
                   </v-col>
                 </v-row>
-              </v-container>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row>
-        <v-col>
-        <v-card>
-          <v-list-item>
-            <v-list-item-content>
-              <v-container>
-                <v-btn color="info" v-on:click="fetchHero">Randomize</v-btn>
-                <v-btn color="primary" dark v-on:click="createHero">Create</v-btn>
-                <v-btn color="accent" dark v-on:click="goBack">Cancel</v-btn>
               </v-container>
             </v-list-item-content>
           </v-list-item>
